@@ -1,16 +1,11 @@
 {
-  "deployment_script_branch":"some_branch_name",
-  "artifact_name":"some_artifact_name",
-  "artifact_version":"some_artifact_version",
-  "art_name":"ddcom-ui",
-  "publisher_port":"4503",
-  "artifactory_repo":"ddcom-release-prod",
-  "servers_list": [
-    {
-      "DD-PUB01-PRD":"DD-DISP01-PRD",
-      "DD-PUB02-PRD":"DD-DISP02-PRD",
-      "DD-PUB03-PRD":"DD-DISP03-PRD",
-      "DD-PUB04-PRD":"DD-DISP04-PRD"
-    }
-  ]
+    "art_name": "ddcom-ui",
+    "publisher_port": "4503",
+    "artifactory_repo": "ddcom-release-prod",
+    "servers_list": [{
+        "DD-PUB01-PRD": "DD-DISP01-PRD",
+        "DD-PUB02-PRD": "DD-DISP02-PRD",
+        "DD-PUB03-PRD": "DD-DISP03-PRD",
+        "DD-PUB04-PRD": "DD-DISP04-PRD"
+    }]
 }
