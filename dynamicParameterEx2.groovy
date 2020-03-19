@@ -25,14 +25,16 @@ properties([
     parameters([
         [
             $class: 'ChoiceParameter', 
-            choiceType: 'PT_SINGLE_SELECT', 
+            choiceType: 'PT_SINGLE_SELECT',
             description: '', 
             filterable: false, 
             name: 'Release', 
             randomName: 'choice-parameter-21337077649621572', 
             script: [
                 $class: 'GroovyScript', 
-                fallbackScript: '', 
+                fallbackScript: [
+                    classpath: [], sandbox: true, script: ''
+                ], 
                 script: '''// Find relevant AMIs based on their name
                     def sout = new StringBuffer(), serr = new StringBuffer()
                     def proc = '/usr/bin/aws --region eu-west-1 ec2 describe-images \
