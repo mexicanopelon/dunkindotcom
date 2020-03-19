@@ -13,10 +13,7 @@ def ARTIFACTORY_REPO = "ddcom-release-prod"
 
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.2.3'
-        jdk "Java 1.8.0_201"
-    }
+
     options {
         buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
     }
