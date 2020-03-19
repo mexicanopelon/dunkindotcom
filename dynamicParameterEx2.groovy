@@ -40,9 +40,7 @@ properties([
                     '''
                     // Find relevant AMIs based on their name
                     def sout = new StringBuffer(), serr = new StringBuffer()
-                    def proc = '/usr/bin/aws ec2 describe-instances --profile=dunkindev --region us-east-1 \
-                            ' --filter "Name=name,Values=swi" \
-                            ' --query "Reservations[*].Instances[*].PrivateIpAddress" --output  text'.execute()
+                    def proc = '/usr/bin/aws ec2 describe-instances --profile=dunkindev --region us-east-1 --filter Name=name,Values=swi --query Reservations[*].Instances[*].PrivateIpAddress --output text'.execute()
                     proc.consumeProcessOutput(sout, serr)
                     proc.waitForOrKill(10000)
                     return sout.tokenize()
@@ -63,7 +61,7 @@ pipeline {
     environment {
         ARTIFACTORY_SERVER = 'Dunkin_artifactory'
     }
-    
+
     stages {
         stage('BUILD') {
             steps {
