@@ -30,14 +30,10 @@ pipeline {
     }
 
     stages {
-        stage('SCM') {
+        stage('BUILD') {
             steps {
                 script{
-                    sh "mkdir codebase"
-                    dir ('codebase') {
-                        git branch: "${params.CODE_BRANCH}",
-                        url: 'git@dbuslnxgithub01.dunkinbrands.corp:dunkindonuts/ddcom-aem.git'
-                    }
+                    sh "echo HELLO WORLD!!!"
                 }
             }
         }   
