@@ -9,8 +9,11 @@ def PUBLISHER_PORT = "4503"
 def ARTIFACTORY_REPO = "ddcom-release-prod"
 def serverGroup
 
-
 ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
+dh = new File('.')
+dh.eachFile {
+    println(it)
+}
 
 def inputFile = new File("./dunkindotcom/dev-properties-1.json")
 def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
@@ -33,7 +36,7 @@ pipeline {
 
     parameters { 
         string(name: 'CODE_BRANCH', defaultValue: '', description: 'Branch Name')
-        choice(name: 'PUBLISHER', choices: ${serverGroup}, description: 'Deploy On')
+        choice(name: 'PUBLISHER', choices: "${serverGroup}", description: 'Deploy On')
         string(defaultValue: "https://dunkindonuts.com", description: 'URL Check', name: 'URL')
         string(defaultValue: "content/dd/en.html", description: 'URL Value', name: 'URL_VAL')
     }
