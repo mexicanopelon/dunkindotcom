@@ -7,6 +7,7 @@ def ARTIFACT_VERSION
 def ART_NAME = 'ddcom-ui'
 def PUBLISHER_PORT = "4503"
 def ARTIFACTORY_REPO = "ddcom-release-prod"
+def serverGroup
 
 
 ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
@@ -15,7 +16,7 @@ def inputFile = new File("./dunkindotcom/dev-properties-1.json")
 def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
 data.servers_list.each{ 
-    def serverGroup = it.keySet()
+    serverGroup = it.keySet()
     print(serverGroup)
 }
 
