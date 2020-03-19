@@ -15,7 +15,7 @@ properties([
             choiceType: 'PT_SINGLE_SELECT',
             description: '', 
             filterable: false, 
-            name: 'Release', 
+            name: 'PUBLISHER', 
             randomName: 'choice-parameter-21337077649621572', 
             script: [
                 $class: 'GroovyScript', 
@@ -53,10 +53,6 @@ pipeline {
 
     environment {
         ARTIFACTORY_SERVER = 'Dunkin_artifactory'
-    }
-
-    parameters { 
-        choice(name: 'PUBLISHER', choices: "${serverGroup}", description: 'Deploy On')
     }
 
     stages {
