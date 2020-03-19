@@ -63,11 +63,7 @@ pipeline {
     environment {
         ARTIFACTORY_SERVER = 'Dunkin_artifactory'
     }
-
-    parameters { 
-        choice(name: 'PUBLISHER', choices: "${serverGroup}", description: 'Deploy On')
-    }
-
+    
     stages {
         stage('BUILD') {
             steps {
