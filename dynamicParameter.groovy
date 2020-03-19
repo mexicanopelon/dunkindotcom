@@ -10,7 +10,7 @@ def ARTIFACTORY_REPO = "ddcom-release-prod"
 def serverGroup
 
 ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
-["ls -la"].execute()
+sh "ls -la"
 
 def inputFile = new File("./dunkindotcom/dev-properties-1.json")
 def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
