@@ -9,6 +9,7 @@ def PUBLISHER_PORT = "4503"
 def ARTIFACTORY_REPO = "ddcom-release-prod"
 def serverGroup
 
+/*
 ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
 
 def inputFile = new File("./dunkindotcom/dev-properties.json")
@@ -18,6 +19,7 @@ data.servers_list.each{
     serverGroup = it.keySet()
     print(serverGroup)
 }
+*/
 
 properties([
     parameters([

@@ -11,6 +11,7 @@ def serverGroup
 
 ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
 
+/*
 def inputFile = new File("./dunkindotcom/dev-properties.json")
 def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
@@ -18,6 +19,7 @@ data.servers_list.each{
     serverGroup = it.keySet()
     print(serverGroup)
 }
+*/
 
 pipeline {
     agent any
