@@ -35,14 +35,19 @@ properties([
                 fallbackScript: [
                     classpath: [], sandbox: true, script: ''
                 ], 
-                script: '''// Find relevant AMIs based on their name
+                script: [
+                    classpath: [], sandbox: true, script: 
+                    '''
+                    // Find relevant AMIs based on their name
                     def sout = new StringBuffer(), serr = new StringBuffer()
                     def proc = '/usr/bin/aws --region eu-west-1 ec2 describe-images \
                             ' --owners OWNER --filter Name=name,Values=PATTERN \
                             ' --query Images[*].{AMI:Name} --output  text'.execute()
                     proc.consumeProcessOutput(sout, serr)
                     proc.waitForOrKill(10000)
-                    return sout.tokenize()'''
+                    return sout.tokenize()
+                    '''
+                ]
             ]
         ]
     ])
