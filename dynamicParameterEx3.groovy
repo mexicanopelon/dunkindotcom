@@ -20,10 +20,10 @@ properties([
             script: [
                 $class: 'GroovyScript', 
                 fallbackScript: [
-                    classpath: [], sandbox: true, script: ''
+                    classpath: [], sandbox: false, script: ''
                 ], 
                 script: [
-                    classpath: [], sandbox: true, script: 
+                    classpath: [], sandbox: false, script: 
                     '''
                     import groovy.json.JsonSlurper
 
