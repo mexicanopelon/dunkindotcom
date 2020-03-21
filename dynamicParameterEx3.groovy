@@ -27,7 +27,7 @@ properties([
                     '''
                     import groovy.json.JsonSlurper
 
-                    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
+                    ["git", "clone", "https://github.com/mexicanopelon/dunkindotcom.git"].execute()
 
                     def workspace = this.binding.jenkinsProject.workspace
 
