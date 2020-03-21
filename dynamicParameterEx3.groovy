@@ -28,10 +28,10 @@ properties([
                     import groovy.json.JsonSlurper
 
                     ["git", "clone", "https://github.com/mexicanopelon/dunkindotcom.git"].execute()
-
+                    return ['fuck','you']
                     def workspace = this.binding.jenkinsProject.workspace
 
-                    return ['fuck','you']
+                    
                     return ["${workspace}"]
                     def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
