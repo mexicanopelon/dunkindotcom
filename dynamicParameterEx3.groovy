@@ -29,14 +29,16 @@ properties([
 
                     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
 
-                    def inputFile = new File("./dunkindotcom/dev-properties.json")
+                    def workspace = this.binding.jenkinsProject.workspace
+
+                    def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
                     data.servers_list.each{ 
-                        serverGroup = it.keySet()
-                        print(serverGroup)
+                        serverGroup =  it.keySet()
                     }
-                    return serverGroup
+
+                    return serverGroup as List
                     '''
                 ]
             ]
