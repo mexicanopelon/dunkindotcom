@@ -26,9 +26,9 @@ properties([
                     classpath: [], sandbox: false, script: 
                     '''
                     import groovy.json.JsonSlurper
-
-                    ["git", "clone", "https://github.com/mexicanopelon/dunkindotcom.git"].execute()
-                    return ['fuck','you']
+                    return ['fuck','you','1']
+                    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
+                    return ['fuck','you','2']
                     def workspace = this.binding.jenkinsProject.workspace
 
                     
