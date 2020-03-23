@@ -16,7 +16,8 @@ properties([
             description: '', 
             filterable: false, 
             name: 'PUBLISHER', 
-            randomName: 'choice-parameter-21337077649621572', 
+            randomName: 'choice-parameter-21337077649621572',
+            bindings: 'workspace="${env.WORKSPACE}"'
             script: [
                 $class: 'GroovyScript', 
                 fallbackScript: [
@@ -29,7 +30,7 @@ properties([
 
                     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
    
-                    def workspace = this.binding.jenkinsProject.workspace
+                    //def workspace = this.binding.jenkinsProject.workspace
 
                     return ["${workspace}"]
                     def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
