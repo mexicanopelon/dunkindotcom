@@ -12,7 +12,7 @@ properties([
     parameters([
         [
             $class: 'ExtendedChoiceParameterDefinition', 
-            choiceType: 'PT_SINGLE_SELECT',
+            choiceType: 'PARAMETER_TYPE_SINGLE_SELECT',
             description: '', 
             filterable: false, 
             name: 'PUBLISHER', 
