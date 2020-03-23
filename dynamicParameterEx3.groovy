@@ -31,7 +31,7 @@ properties([
    
                     //def workspace = this.binding.jenkinsProject.workspace
 
-                    def workspace = "'''"${env.BUILD_URL}"'''
+                    def workspace = "'''"${env.WORKSPACE}"'''
                     return ["${workspace}"]
                     def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
