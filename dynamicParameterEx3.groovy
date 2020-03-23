@@ -32,6 +32,7 @@ properties([
                     //def workspace = this.binding.jenkinsProject.workspace
                     def workspace = "/Users/cdelapaz/.jenkins/workspace/try_again3"
 
+                    return ["test1","test2"]
                     return ["${workspace}","test"]
                     def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
@@ -40,7 +41,7 @@ properties([
                         serverGroup =  it.keySet()
                     }
 
-                    return serverGroup as List
+                    ///return serverGroup as List
                     '''
                 ]
             ]
