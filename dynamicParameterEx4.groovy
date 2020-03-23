@@ -17,14 +17,13 @@ properties([
             filterable: false, 
             name: 'PUBLISHER', 
             randomName: 'choice-parameter-21337077649621572',
-            bindings: 'workspace="${env.WORKSPACE}"'
             script: [
                 $class: 'GroovyScript', 
                 fallbackScript: [
                     classpath: [], sandbox: false, script: ''
                 ], 
                 script: [
-                    classpath: [], sandbox: false, script: 
+                    classpath: [], sandbox: false, bindings: 'workspace="${env.WORKSPACE}"', script: 
                     '''
                     import groovy.json.JsonSlurper
 
