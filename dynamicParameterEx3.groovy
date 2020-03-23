@@ -29,9 +29,8 @@ properties([
 
                     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
    
-                    //def workspace = this.binding.jenkinsProject.workspace
+                    def workspace = this.binding.jenkinsProject.workspace
 
-                    def workspace = "'''"${env.WORKSPACE}"'''
                     return ["${workspace}"]
                     def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
