@@ -11,7 +11,7 @@ def serverGroup
 properties([
     parameters([
         [
-            $class: 'ExtendedChoiceParameter', 
+            $class: 'ExtendedChoice', 
             choiceType: 'PT_SINGLE_SELECT',
             description: '', 
             filterable: false, 
