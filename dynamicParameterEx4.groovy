@@ -12,7 +12,6 @@ properties([
     parameters([
         [
             $class: 'ExtendedChoiceParameterDefinition',
-            choiceTypes: 'BASIC_PARAMETER' 
             choiceType: 'PT_SINGLE_SELECT',
             description: '', 
             filterable: false, 
