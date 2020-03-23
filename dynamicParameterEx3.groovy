@@ -26,14 +26,14 @@ properties([
                     classpath: [], sandbox: false, script: 
                     '''
                     import groovy.json.JsonSlurper
-                    return ["test1","test2"]
+                    return ["test1","test2"] as List
                     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git"].execute()
-                    return ["test3","test4"]
+                    return ["test3","test4"] as List
                     //def workspace = this.binding.jenkinsProject.workspace
                     def workspace = "/Users/cdelapaz/.jenkins/workspace/try_again3"
 
-                    return ["test5","test6"]
-                    return ["${workspace}","test"]
+                    return ["test5","test6"] as List
+                    return ["${workspace}","test"] as List
                     def inputFile = new File("${workspace}/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
