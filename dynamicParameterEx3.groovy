@@ -63,6 +63,7 @@ pipeline {
             steps {
                 script{
                     sh "echo HELLO WORLD!!!"
+                    sh "echo WORKSPACE is ${env.WORKSPACE}"
                 }
             }
         }   
