@@ -30,8 +30,9 @@ properties([
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
                     data.servers_list.each{ 
-                    serverGroup = it.keySet()
-                    print(serverGroup)
+                        serverGroup = it.keySet()
+                        print(serverGroup)
+                    }
                     '''
                 ]
             ]
