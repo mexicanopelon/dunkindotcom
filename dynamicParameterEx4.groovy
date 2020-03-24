@@ -32,6 +32,7 @@ properties([
                     def inputFile = new File("/tmp/dunkindotcom/dev-properties.json")
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
+                    def serverGroup = []
                     data.servers_list.each{ 
                         serverGroup =  it.keySet()
                     }
