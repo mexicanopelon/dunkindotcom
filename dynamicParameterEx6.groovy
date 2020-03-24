@@ -26,6 +26,8 @@ properties([
                 script: [
                     classpath: [], sandbox: true, script: 
                     '''
+                    import groovy.json.JsonSlurper
+
                     def inputFile = new File('wget -O https://github.com/mexicanopelon/dunkindotcom/blob/master/dev-properties.json'.execute())
                     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
@@ -33,6 +35,8 @@ properties([
                         serverGroup = it.keySet()
                         print(serverGroup)
                     }
+
+                    return serverGroup as List
                     '''
                 ]
             ]
