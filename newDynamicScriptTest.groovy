@@ -1,8 +1,19 @@
 #!/usr/bin/env groovy
+import groovy.json.JsonSlurper
 
 List JustTest() {
-        List xxx = ['a','b']
-        return xxx
+    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
+    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
+
+    def inputFile = new File("/tmp/dunkindotcom/dev-properties.json")
+    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+
+    def serverGroup = []
+    data.servers_list.each{ 
+        serverGroup =  it.keySet()
+    }
+
+    return serverGroup as List
 }
 
 properties([
