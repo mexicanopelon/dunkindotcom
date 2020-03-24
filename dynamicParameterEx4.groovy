@@ -37,6 +37,8 @@ properties([
                         serverGroup =  it.keySet()
                     }
 
+                    ["rm", "-Rf", /tmp/dunkindotcom"].execute()
+
                     return serverGroup as List
                     '''
                 ]
