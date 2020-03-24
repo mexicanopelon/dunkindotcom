@@ -26,12 +26,18 @@ properties([
                 script: [
                     classpath: [], sandbox: true, script: 
                     '''
-                    // Find relevant AMIs based on their name
-                    def sout = new StringBuffer(), serr = new StringBuffer()
-                    def proc = 'wget -O https://github.com/mexicanopelon/dunkindotcom/blob/master/dev-properties.json'.execute()
-                    proc.consumeProcessOutput(sout, serr)
-                    proc.waitForOrKill(10000)
-                    return sout.tokenize()
+                    import groovy.json.JsonSlurper
+
+                    def inputFile = new File("/tmp/devprops.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/dev-properties.json").getText()
+                    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+
+                    def serverGroup = []
+                    data.servers_list.each{ 
+                    serverGroup = it.keySet()
+                    print(serverGroup)
+                    }
+
+                    return serverGroup as List
                     '''
                 ]
             ]

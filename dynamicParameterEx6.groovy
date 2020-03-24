@@ -28,8 +28,14 @@ properties([
                     '''
                     import groovy.json.JsonSlurper
 
-                    def inputFile = new File('wget -O https://github.com/mexicanopelon/dunkindotcom/blob/master/dev-properties.json'.execute())
-                    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+
+    def jsonSlurper = new JsonSlurper()
+    def data = jsonSlurper.parseText(new File("data.json").text)
+    println data.TESTS.each{ println it["$item"] }  
+}
+
+                    def inputFile = new File('wget -O https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/dev-properties.json'.execute().text())
+                    def data = new JsonSlurper().parseText(inputFile, 'UTF-8')
 
                     data.servers_list.each{ 
                         serverGroup = it.keySet()
