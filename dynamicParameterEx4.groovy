@@ -11,7 +11,7 @@ def serverGroup
 properties([
     parameters([
         [
-            $class: 'ExtendedChoiceParameterDefinition',
+            $class: 'ChoiceParameter',
             choiceType: 'PT_SINGLE_SELECT',
             description: '', 
             filterable: false, 
@@ -23,7 +23,7 @@ properties([
                     classpath: [], sandbox: false, script: ''
                 ], 
                 script: [
-                    classpath: [], sandbox: false, bindings: 'workspace="${env.WORKSPACE}"', script: 
+                    classpath: [], sandbox: false, script: 
                     '''
                     import groovy.json.JsonSlurper
 
