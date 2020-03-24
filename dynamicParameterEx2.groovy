@@ -33,10 +33,10 @@ properties([
             script: [
                 $class: 'GroovyScript', 
                 fallbackScript: [
-                    classpath: [], sandbox: true, script: ''
+                    classpath: [], sandbox: false, script: ''
                 ], 
                 script: [
-                    classpath: [], sandbox: true, script: 
+                    classpath: [], sandbox: false, script: 
                     '''
                     // Find relevant AMIs based on their name
                     def sout = new StringBuffer(), serr = new StringBuffer()
