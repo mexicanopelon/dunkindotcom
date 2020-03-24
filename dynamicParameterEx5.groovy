@@ -21,7 +21,7 @@ properties([
             script: [
                 $class: 'GroovyScript', 
                 fallbackScript: [
-                    classpath: [], sandbox: true, script: ''
+                    classpath: [], sandbox: false, script: ''
                 ], 
                 script: [
                     classpath: [], sandbox: false, script: 
