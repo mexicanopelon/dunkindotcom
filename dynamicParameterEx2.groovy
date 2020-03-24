@@ -38,11 +38,13 @@ properties([
                 script: [
                     classpath: [], sandbox: false, script: 
                     '''
-                    // Find relevant AMIs based on their name
+                    // List of Servers
                     def sout = new StringBuffer(), serr = new StringBuffer()
-                    def proc = 'aws ec2 describe-instances --profile=dunkindev --region=us-east-1 --filter Name=tag:Role,Values=mapi* --query "Reservations[].Instances[].[Tags[?Key=='Name'].Value]" --output tex'.execute()
+                    def proc = ["/usr/local/bin/aws", "ec2", "describe-instances", "--profile=dunkindev", "--region=us-east-1", "--filter",  "Name=tag:Role,Values=mapi*", "--query", "Reservations[].Instances[].[Tags[?Key=='Name'].Value]", "--output",  "text"].execute()
+
                     proc.consumeProcessOutput(sout, serr)
                     proc.waitForOrKill(10000)
+
                     return sout.tokenize()
                     '''
                 ]
