@@ -45,7 +45,7 @@ properties([
                     proc.consumeProcessOutput(sout, serr)
                     proc.waitForOrKill(10000)
 
-                    return sout.tokenize()
+                    return sout.tokenize() as List
                     '''
                 ]
             ]
