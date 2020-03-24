@@ -27,6 +27,7 @@ properties([
                     '''
                     import groovy.json.JsonSlurper
 
+                    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
                     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
 
                     def inputFile = new File("/tmp/dunkindotcom/dev-properties.json")
@@ -36,8 +37,6 @@ properties([
                     data.servers_list.each{ 
                         serverGroup =  it.keySet()
                     }
-
-                    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
 
                     return serverGroup as List
                     '''
