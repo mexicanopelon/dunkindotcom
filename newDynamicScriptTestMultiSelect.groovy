@@ -4,7 +4,7 @@ import groovy.json.JsonSlurperClassic
 List GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(5)
+    sleep(2)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
@@ -23,7 +23,7 @@ List GetParamList() {
                     it.each{
                         it.keySet().each {
                             options.add("${it}")
-                            //envMap2.put("'${it}'","'${env}'")
+                            //envMap.put("'${it}'","'${env}'")
                             
                         }
                     }
@@ -38,7 +38,7 @@ List GetParamList() {
 LinkedHashMap getEnvMap() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(5)
+    sleep(2)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
@@ -52,7 +52,6 @@ LinkedHashMap getEnvMap() {
                     it.each{
                         it.keySet().each {
                             envMap.put("'${it}'","'${env}'")
-                            println ("${envMap2}")
                         }
                     }
                 }
@@ -62,8 +61,6 @@ LinkedHashMap getEnvMap() {
 
     return envMap
 }
-
-def envMap2 = getEnvMap()
 
 properties([
     parameters([
@@ -88,7 +85,6 @@ pipeline {
                 script{
                     sh "echo HELLO WORLD!!!"
                     println getEnvMap()
-                    println "${envMap2}"
                 }
             }
         }   
