@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurperClassic
 
-def envMap2 = getEnvMap()
-
 List GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
@@ -65,6 +63,8 @@ LinkedHashMap getEnvMap() {
     return envMap
 }
 
+def envMap2 = getEnvMap()
+
 properties([
     parameters([
         choice(name: 'PARAM', choices: GetParamList().join('\n'), description: 'Choice'),
@@ -88,7 +88,7 @@ pipeline {
                 script{
                     sh "echo HELLO WORLD!!!"
                     println getEnvMap()
-                }
+                    println "${envMap2}"
             }
         }   
     }
