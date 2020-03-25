@@ -34,7 +34,7 @@ List GetParamList() {
 
 properties([
     parameters([
-        choice(name: 'PARAM', choices: GetParamList().join('\n'), description: 'Choice'),
+        choice(name: 'PARAM', choices: GetParamList().join('\n'), type: 'PT_MULTI_SELECT', description: 'Choice'),
     ])
 ])
 
