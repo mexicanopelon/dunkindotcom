@@ -89,6 +89,7 @@ pipeline {
                     sh "echo HELLO WORLD!!!"
                     println getEnvMap()
                     println "${envMap2}"
+                }
             }
         }   
     }
