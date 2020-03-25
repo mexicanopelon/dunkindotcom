@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurperClassic
 
+def envMap2 = [:]
+
 List GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
@@ -23,7 +25,7 @@ List GetParamList() {
                     it.each{
                         it.keySet().each {
                             options.add("${it}")
-                            //envMap.put("'${it}'","'${env}'")
+                            envMap2.put("'${it}'","'${env}'")
                             
                         }
                     }
@@ -86,6 +88,7 @@ pipeline {
                 script{
                     sh "echo HELLO WORLD!!!"
                     println getEnvMap()
+                    println envMap2
                 }
             }
         }   
