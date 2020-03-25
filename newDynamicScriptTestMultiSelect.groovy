@@ -1,7 +1,8 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper
 
-def pubList = []
+def envMap = [:]
+
 List GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
@@ -16,13 +17,16 @@ List GetParamList() {
     data.Environment.each{
         envs = it.keySet()
         envs.each{
-            options.add("----- ${it} -----")
+            env = it.toString()
+            options.add("----- ${env} -----")
             serverGroup = data.Environment.getAt("$it").ServerGroup
             serverGroup.each{
                 it.each{
                     it.each{
-                        it.valueSet().each {
+                        it.keySet().each {
                             options.add("${it}")
+                            envMap.put("'${it}'","'${env}'")
+                            
                         }
                     }
                 }
@@ -35,7 +39,7 @@ List GetParamList() {
 
 properties([
     parameters([
-        choice(name: 'PARAM', choices: GetParamList().join('\n'), type: 'PT_MULTI_SELECT', description: 'Choice'),
+        choice(name: 'PARAM', choices: GetParamList().join('\n'), description: 'Choice'),
     ])
 ])
 
@@ -55,6 +59,7 @@ pipeline {
             steps {
                 script{
                     sh "echo HELLO WORLD!!!"
+                    println "${envMap}"
                 }
             }
         }   
