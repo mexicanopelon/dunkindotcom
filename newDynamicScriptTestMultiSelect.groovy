@@ -50,7 +50,7 @@ pipeline {
                 script{
                     sh "echo HELLO WORLD!!!"
 
-                    List getEnvMap() {
+                    Map getEnvMap() {
                         ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
                         ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
                         sleep(5)
