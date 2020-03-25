@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper
 
-def envMap = [:]
-
 List GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
@@ -25,7 +23,7 @@ List GetParamList() {
                     it.each{
                         it.keySet().each {
                             options.add("${it}")
-                            envMap.put("'${it}'","'${env}'")
+                            //envMap.put("'${it}'","'${env}'")
                             
                         }
                     }
@@ -35,6 +33,34 @@ List GetParamList() {
     }
 
     return options as List
+}
+
+List getEnvMap() {
+    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
+    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
+    sleep(5)
+
+    def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
+    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+    def envMap = [:]
+    data.Environment.each{
+        it.keySet().each{
+            env = it.toString()
+            serverGroup = data.Environment.getAt("$it").ServerGroup
+            serverGroup.each{
+                it.each{
+                    it.each{
+                        it.keySet().each {
+                            envMap.put("'${it}'","'${env}'")
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return envMap
 }
 
 properties([
@@ -59,7 +85,7 @@ pipeline {
             steps {
                 script{
                     sh "echo HELLO WORLD!!!"
-                    println "${envMap}"
+                    println getEnvMap()
                 }
             }
         }   
