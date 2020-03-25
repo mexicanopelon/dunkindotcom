@@ -69,25 +69,3 @@ properties([
     ])
 ])
 
-pipeline {
-    agent any
-
-    options {
-        buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5'))
-    }
-
-    environment {
-        ARTIFACTORY_SERVER = 'Dunkin_artifactory'
-    }
-
-    stages {
-        stage('BUILD') {
-            steps {
-                script{
-                    sh "echo HELLO WORLD!!!"
-                    println getEnvMap()
-                }
-            }
-        }   
-    }
-}
