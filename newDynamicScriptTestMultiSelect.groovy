@@ -2,11 +2,11 @@
 import groovy.json.JsonSlurper
 
 List GetParamList() {
-    ["rm", "-Rf", "dunkindotcom/"].execute()
-    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git","/tmp/dunkindotcom"].execute()
+    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
+    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git","/tmp/"].execute()
     sleep(5)
 
-    def inputFile = new File("/tmp/dunkindotcom/dunkindotcom/tagsProperties.json")
+    def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
     def options = []
