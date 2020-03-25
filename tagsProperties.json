@@ -6,9 +6,9 @@
             }],
             "Author": [{
                 "Auth1": "NEWDD-Auth01-DEV"
-            }]
+            }],
 
-                "Artifactory": [{
+            "Artifactory": [{
                 "Repo": "ddcom-release-dev",
                 "Server": "DUNKIN_ARTIFACTORY"
             }],
@@ -21,7 +21,7 @@
             }],
             "Author": [{
                 "Auth1": ""
-            }]
+            }],
             "Artifactory": [{
                 "Repo": "ddcom-release-qa",
                 "Server": "DUNKIN_ARTIFACTORY"
