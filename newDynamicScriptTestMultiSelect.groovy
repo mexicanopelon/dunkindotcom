@@ -50,7 +50,7 @@ pipeline {
                 script{
                     sh "echo HELLO WORLD!!!"
 
-                    def getEnvMap() {
+                  
                         ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
                         ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
                         sleep(5)
@@ -75,10 +75,8 @@ pipeline {
                             }
                         }
 
-                        return envMap
-                    }
 
-                    println getEnvMap()
+                    println envMap
                 }
             }
         }   
