@@ -1,93 +1,58 @@
 {
     "Environment": [{
-		
-        "Dev":
-		[{
-            "ServerGroup":
-			[{
-				"NEWDD-DISP02-DEV": "NEWDD-PUB02-DEV"
+        "Dev": [{
+            "ServerGroup": [{
+                "NEWDD-PUB02-DEV": "NEWDD-DISP02-DEV"
             }],
-            "Author":
-			[{
+            "Author": [{
                 "Auth1": "NEWDD-Auth01-DEV"
-            }],
-            "Artifactory":
-			[{
+            }]
+
+                "Artifactory": [{
                 "Repo": "ddcom-release-dev",
                 "Server": "DUNKIN_ARTIFACTORY"
             }],
             "Url": "https://dev2.dunkindonuts.com"
         }],
 
-        "Qa":
-		[{
-            "ServerGroup":
-			[{
+        "Qa": [{
+            "ServerGroup": [{
                 "DD-DISP01-QA": "DD-PUB01-QA"
             }],
-            "Author":
-			[{
+            "Author": [{
                 "Auth1": ""
-            }],
-            "Artifactory":
-			[{
+            }]
+            "Artifactory": [{
                 "Repo": "ddcom-release-qa",
                 "Server": "DUNKIN_ARTIFACTORY"
             }],
             "Url": "https://qa2.dunkindonuts.com"
         }],
-		
-        "Stag":
-		[{
-            "Tags":
-			[{
-				"servers_group":
-				[{
-                    "DD-DISP01-STG": "DD-PUB01-STG",
-                    "DD-DISP02-STG": "DD-PUB02-STG"
-                }]
+
+        "Stag": [{
+            "ServerGroup": [{
+                "DD-DISP01-STG": "DD-PUB01-STG",
+                "DD-DISP02-STG": "DD-PUB02-STG"
             }],
-            "Artifactory":
-			[{
+            "Artifactory": [{
                 "Repo": "ddcom-release-stg",
                 "Server": "DUNKIN_ARTIFACTORY"
-			}],
-			"CpCode": [{
-				"Donuts": "395885",
-				"Nation": "733175"
-			}],
+            }],
             "Url": "https://staging3.dunkindonuts.com"
         }],
-		
-        "Prod":
-		[{
-            "ServerGroup":
-			[{
+
+        "Prod": [{
+            "ServerGroup": [{
                 "DD-DISP01-PROD": "DD-PUB01-PROD",
                 "DD-DISP02-PROD": "DD-PUB02-PROD",
                 "DD-DISP03-PROD": "DD-PUB03-PROD",
                 "DD-DISP04-PROD": "DD-PUB04-PROD"
             }],
-            "Artifactory":
-			[{
+            "Artifactory": [{
                 "Repo": "ddcom-release-prod",
                 "Server": "DUNKIN_ARTIFACTORY"
-			}],
-			"CpCode": [{
-				"Donuts": "",
-				"Nation": ""
-			}],
+            }],
             "Url": "https://dunkindonuts.com"
-		}]
-	}],
-	"Port":
-	[{
-		"Auth": "4502",
-		"Pub": "4503"
-	}],
-	"Package":
-	[{
-		"App": "ddcom-ui",
-		"Config": "ddcom-ui-config"
-	}]
+        }]
+    }]
 }
