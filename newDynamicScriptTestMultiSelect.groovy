@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper
 
+def pubList = []
 List GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
@@ -20,7 +21,7 @@ List GetParamList() {
             serverGroup.each{
                 it.each{
                     it.each{
-                        it.keySet().each {
+                        it.valueSet().each {
                             options.add("${it}")
                         }
                     }
