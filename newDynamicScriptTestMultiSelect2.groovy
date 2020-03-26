@@ -29,6 +29,7 @@ import groovy.json.JsonSlurperClassic
 
 def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
+    sleep(5000)
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
     sleep(5000)
 
@@ -113,6 +114,7 @@ import groovy.json.JsonSlurperClassic
 
 def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
+    sleep(5000)
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
     sleep(5000)
 
