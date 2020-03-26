@@ -26,37 +26,42 @@ properties([
                     classpath: [], sandbox: false, script: 
                     '''
 import groovy.json.JsonSlurperClassic
-["rm", "-Rf", "/tmp/dunkindotcom"].execute()
-["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-sleep(2)
 
-def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
-def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
+def GetParamList() {
+    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
+    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
+    sleep(2)
 
-def options = []
-def envs = []
+    def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
+    def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
 
-data.Environment.each{
-    envs = it.keySet()
-    envs.each{
-        env = it.toString()
-        options.add("----- ${env} -----")
-        serverGroup = data.Environment.getAt("$it").ServerGroup
-        serverGroup.each{
-            it.each{
+    def options = []
+    def envs = []
+
+    data.Environment.each{
+        envs = it.keySet()
+        envs.each{
+            env = it.toString()
+            options.add("----- ${env} -----")
+            serverGroup = data.Environment.getAt("$it").ServerGroup
+            serverGroup.each{
                 it.each{
-                    it.keySet().each {
-                        options.add("${it}")
-                        //envMap.put("'${it}'","'${env}'")
-                        
+                    it.each{
+                        it.keySet().each {
+                            options.add("${it}")
+                            //envMap.put("'${it}'","'${env}'")
+                            
+                        }
                     }
                 }
             }
         }
     }
+
+    return options as List
 }
 
-return options as List
+return GetParamList().join('\n')
                     '''
                 ]
             ]
