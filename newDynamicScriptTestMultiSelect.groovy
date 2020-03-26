@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper
 
-List GetParamList() {
+def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
     sleep(2)
@@ -35,7 +35,7 @@ List GetParamList() {
     return options as List
 }
 
-LinkedHashMap getEnvMap() {
+def getEnvMap() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
     sleep(2)
