@@ -30,7 +30,7 @@ import groovy.json.JsonSlurperClassic
 def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(10)
+    sleep(5000)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
