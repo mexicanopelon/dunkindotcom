@@ -9,7 +9,7 @@ properties([
         [
             $class: 'ChoiceParameter',
             choiceType: 'PT_SINGLE_SELECT',
-            description: '', 
+            description: 'Please Choose a Valid Publisher', 
             filterable: false, 
             name: 'PUBLISHER', 
             randomName: 'choice-parameter-21337077649621572',
@@ -25,7 +25,7 @@ import groovy.json.JsonSlurper
 
 def GetParamList() {
     def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
-    sleep(2000)
+    sleep(3000)
     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
     def options = []
