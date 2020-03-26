@@ -60,7 +60,7 @@ def getEnvMap() {
 
 properties([
     parameters([
-        choice(name: 'PARAM', choices: GetParamList().join('\n'), description: 'Choice'),
+        choice(name: 'PARAM', choices: GetParamList().join('\n'), description: 'Please Choose a Valid Publisher'),
     ])
 ])
 
