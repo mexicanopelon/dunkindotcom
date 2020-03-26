@@ -3,10 +3,6 @@
 def DEPLOYMENT_SCRIPT_BRANCH
 def ARTIFACT_NAME
 def ARTIFACT_VERSION
-def ART_NAME = 'ddcom-ui'
-def PUBLISHER_PORT = "4503"
-def ARTIFACTORY_REPO = "ddcom-release-prod"
-def serverGroup
 
 properties([
     parameters([
@@ -28,12 +24,6 @@ properties([
 import groovy.json.JsonSlurper
 
 def GetParamList() {
-    //["rm", "-Rf", "/tmp/dunkindotcom"].execute()
-    //sleep(1000)
-    //["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    //sleep(5000)
-
-    //def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
     sleep(2000)
     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
