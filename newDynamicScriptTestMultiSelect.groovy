@@ -1,13 +1,10 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurperClassic
 
-//def envMap = [:]
+def envMap = [:]
 def GetParamList() {
-    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
-    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(2)
-
-    def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
+     def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
+    sleep(2000)
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
 
     def options = []
@@ -37,12 +34,10 @@ def GetParamList() {
 }
 
 def getEnvMap() {
-    ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
-    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(2)
-
-    def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
+    def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
+    sleep(2000)
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
+    
     def envMap = [:]
     data.Environment.each{
         it.keySet().each{
