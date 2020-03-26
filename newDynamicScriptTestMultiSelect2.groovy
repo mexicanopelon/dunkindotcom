@@ -25,7 +25,7 @@ properties([
                 script: [
                     classpath: [], sandbox: false, script: 
                     '''
-import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurper
 
 def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
@@ -34,7 +34,7 @@ def GetParamList() {
     sleep(4000)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
-    def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
+    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
     def options = []
     def envs = []
