@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic
 
 def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
@@ -7,7 +7,7 @@ def GetParamList() {
     sleep(2)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
-    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+    def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
 
     def options = []
     def envs = []
@@ -41,7 +41,7 @@ def getEnvMap() {
     sleep(2)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
-    def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+    def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
     def envMap = [:]
     data.Environment.each{
         it.keySet().each{
