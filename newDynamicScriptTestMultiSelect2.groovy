@@ -35,6 +35,7 @@ def GetParamList() {
 
     //def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
+    sleep(2000)
     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
 
     def options = []
