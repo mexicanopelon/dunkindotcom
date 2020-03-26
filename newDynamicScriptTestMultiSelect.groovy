@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurperClassic
 
+//def envMap = [:]
 def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
