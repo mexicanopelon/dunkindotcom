@@ -62,7 +62,7 @@ def GetParamList() {
     return options as List
 }
 
-return GetParamList().join('\n')
+return GetParamList()
                     '''
                 ]
             ]
@@ -92,65 +92,3 @@ pipeline {
         }   
     }
 }
-
-properties([
-    parameters([
-        [
-            $class: 'ChoiceParameter',
-            choiceType: 'PT_SINGLE_SELECT',
-            description: '', 
-            filterable: false, 
-            name: 'PUBLISHER', 
-            randomName: 'choice-parameter-21337077649621572',
-            script: [
-                $class: 'GroovyScript', 
-                fallbackScript: [
-                    classpath: [], sandbox: false, script: ''
-                ], 
-                script: [
-                    classpath: [], sandbox: false, script: 
-                    '''
-import groovy.json.JsonSlurperClassic
-
-def GetParamList() {
-    //["rm", "-Rf", "/tmp/dunkindotcom"].execute()
-    //sleep(5000)
-    ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(5000)
-
-    def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
-    def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
-
-    def options = []
-    def envs = []
-
-    data.Environment.each{
-        envs = it.keySet()
-        envs.each{
-            env = it.toString()
-            options.add("----- ${env} -----")
-            serverGroup = data.Environment.getAt("$it").ServerGroup
-            serverGroup.each{
-                it.each{
-                    it.each{
-                        it.keySet().each {
-                            options.add("${it}")
-                            //envMap.put("'${it}'","'${env}'")
-                            
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    return options as List
-}
-
-return GetParamList().join('\n')
-                    '''
-                ]
-            ]
-        ]
-    ])
-])
