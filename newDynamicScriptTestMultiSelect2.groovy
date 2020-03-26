@@ -31,7 +31,7 @@ def GetParamList() {
     ["rm", "-Rf", "/tmp/dunkindotcom"].execute()
     sleep(1000)
     ["git", "clone", "git@github.com:mexicanopelon/dunkindotcom.git", "/tmp/dunkindotcom"].execute()
-    sleep(4000)
+    sleep(5000)
 
     def inputFile = new File("/tmp/dunkindotcom/tagsProperties.json")
     def data = new JsonSlurper().parseFile(inputFile, 'UTF-8')
