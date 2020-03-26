@@ -4,7 +4,7 @@ import groovy.json.JsonSlurperClassic
 def envMap = [:]
 def GetParamList() {
      def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
-    sleep(2000)
+    sleep(2)
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
 
     def options = []
@@ -35,9 +35,9 @@ def GetParamList() {
 
 def getEnvMap() {
     def inputFile = new File("/tmp/tagsProperties.json") << new URL ("https://raw.githubusercontent.com/mexicanopelon/dunkindotcom/master/tagsProperties.json").getText()
-    sleep(2000)
+    sleep(2)
     def data = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
-    
+
     def envMap = [:]
     data.Environment.each{
         it.keySet().each{
