@@ -9,7 +9,7 @@ properties([
         [
             $class: 'ChoiceParameter',
             choiceType: 'PT_SINGLE_SELECT',
-            description: 'Please Choose a Valid Publisher', 
+            description: 'Please Choose a Branch', 
             filterable: false, 
             name: 'Branch Name', 
             randomName: 'choice-parameter-21337077649621572',
