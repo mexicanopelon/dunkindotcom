@@ -31,7 +31,6 @@ pipeline {
             steps {
                 script{
                     sh "echo HELLO WORLD!!!"
-                    println getEnvMap()
                 }
             }
         }   
