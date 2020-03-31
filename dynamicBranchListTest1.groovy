@@ -24,7 +24,8 @@ properties([
 def getTags = "git ls-remote --heads --tags https://github.com/mexicanopelon/dunkindotcom.git".execute().text
 
 return getTags.readLines().collect { 
-   it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '')
+   it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '') 
+}
                     '''
                 ]
             ]
