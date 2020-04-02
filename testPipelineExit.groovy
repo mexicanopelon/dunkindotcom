@@ -55,15 +55,15 @@ pipeline {
         }
         stage('CLEAN_WORKSPCE') {
             steps {
-                cleanWs()
+                script{
+                    sh "echo CLEAN_WORKSPACE RAN!!!"
+                }
             }
         }
         stage('GET_DEPLOYMENT_PROP') {
             steps {
-                script {
-                    echo "${params.Publisher}"
-                    BUILD_USER = getBuildUser()
-                    echo "${BUILD_USER}"
+                script{
+                    sh "echo GET_DEPLOYMENT_PROP RAN!!!"
                 }
             }
         }
