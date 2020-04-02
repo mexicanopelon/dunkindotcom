@@ -35,7 +35,9 @@ pipeline {
             steps{
                 script{
                     echo "Build Updated"
-                    throw new FlowInterruptedException(Result.SUCCESS)
+                    //throw new FlowInterruptedException(Result.SUCCESS)
+                    currentBuild.getRawBuild().getExecutor().interrupt(Result.SUCCESS)
+                    sleep(1) 
                 }
             }
         }
