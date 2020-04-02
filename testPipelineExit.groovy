@@ -13,8 +13,8 @@ def getBuildUser() {
 }
 def GetPub(){
     node{
-        git branch: "common",
-        url: "git@dbuslnxgithub01.dunkinbrands.corp:dunkindonuts/ddcom_CICD.git"
+        git branch: "master",
+        url: "git@github.com:mexicanopelon/dunkindotcom.git"
         def props = readJSON file: 'tagsProperties.json', returnPojo: true
         def options = []
         def count = '1';
