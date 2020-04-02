@@ -1,4 +1,8 @@
 #!/usr/bin/groovy
+
+import jenkins.model.CauseOfInterruption;
+import jenkins.model.InterruptedBuildAction;
+
 def SLACK_CHANNEL
 def COLOUR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
 def getBuildUser() {
