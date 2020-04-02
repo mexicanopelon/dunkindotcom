@@ -1,5 +1,19 @@
 #!/usr/bin/groovy
+import com.google.common.collect.Sets;
 import hudson.AbortException;
+import hudson.Functions;
+import hudson.model.Executor;
+import hudson.model.Result;
+import hudson.model.Run;
+import hudson.model.TaskListener;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.CheckForNull;
+import javax.annotation.Nonnull;
 import jenkins.model.CauseOfInterruption;
 import jenkins.model.InterruptedBuildAction;
 
