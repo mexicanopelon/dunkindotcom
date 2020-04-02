@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-
+import hudson.AbortException;
 import jenkins.model.CauseOfInterruption;
 import jenkins.model.InterruptedBuildAction;
 
