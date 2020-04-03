@@ -1,6 +1,7 @@
 #!/usr/bin/groovy
 def COLOUR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
 
+/*
 def getBuildUser() {
     node {
         wrap([$class: 'BuildUser']) {
@@ -9,7 +10,7 @@ def getBuildUser() {
         return GET_BUILD_USER
     }
 }
-/*
+
 def GetPub(){
     node{
         git branch: "common",
@@ -34,7 +35,7 @@ def GetEnv(){
         def props = readJSON file: 'tagsProperties.json', returnPojo: true
         def options = []
         def count = '1';
-        println "HELLO 1"
+        return ['env']
         return props.Environment.get(0).each.get(0) as List
     }
 }
