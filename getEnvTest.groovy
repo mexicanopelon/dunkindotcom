@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
-def SLACK_CHANNEL
 def COLOUR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
+
 def getBuildUser() {
     node {
         wrap([$class: 'BuildUser']) {
@@ -9,6 +9,7 @@ def getBuildUser() {
         return GET_BUILD_USER
     }
 }
+/*
 def GetPub(){
     node{
         git branch: "common",
@@ -24,6 +25,7 @@ def GetPub(){
         return options as List
     }
 }
+*/
 
 def GetEnv(){
     node{
@@ -33,7 +35,7 @@ def GetEnv(){
         def options = []
         def count = '1';
         println "HELLO 1"
-        return props.Environment.get(0).each.get(0)
+        return props.Environment.get(0).each.get(0) as List
     }
 }
 
