@@ -35,8 +35,15 @@ def GetEnv(){
         def props = readJSON file: 'tagsProperties.json', returnPojo: true
         def options = []
         def count = '1';
-        return ['env']
-        return props.Environment.get(0).each.get(0) as List
+        //return ['env']
+        //return props.Environment.get(0).each.get(0) as List
+
+        props.Environment.get(0).Dev.get(0).ServerGroup.get(0).each{ key, value ->
+            echo "PUB$count"
+            options.add("PUB$count")
+        count++
+        }
+        return options as List
     }
 }
 
