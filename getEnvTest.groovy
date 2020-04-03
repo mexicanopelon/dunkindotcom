@@ -32,6 +32,7 @@ def GetEnv(){
         def props = readJSON file: 'tagsProperties.json', returnPojo: true
         def options = []
         def count = '1';
+        println "HELLO 1"
         return props.Environment.get(0).each.get(0)
     }
 }
